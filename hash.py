@@ -1,23 +1,37 @@
 import hashlib
-s = input("Enter a number or word: ")
-hash1 = input("Choose a hashing algorithm: md5(m)/SHA(s)")
-if hash1 =='':
-  print('error')
-else:
-  if hash1 == "m":
-    m = hashlib.md5(str(s).encode("ascii")).hexdigest()
-    print ("md5:",m)
-  if hash1 == "s":
-    sha = input("sha-1(1)/sha-256(2)/sha-512(3)/sha3-384(4)")
-    if sha == "1" :
-      sha1 = hashlib.sha1(str(s).encode("ascii")).hexdigest()
-      print ("sha1:",sha1)
-    if sha == "2" :
-      sha2 = hashlib.sha256(str(s).encode("ascii")).hexdigest()
-      print ("sha256:",sha2)
-    if sha == "3" :
-      sha3 = hashlib.sha512(str(s).encode("ascii")).hexdigest()
-      print ("sha512:",sha3)
-    if sha == "4" :
-      sha3 = hashlib.sha3_384(str(s).encode("ascii")).hexdigest()
-      print ("sha384:",sha3)
+import sys
+
+def main():
+    try:
+        argm = sys.argv[1]
+    except:
+        print("Error argument!")
+        exit(0)
+    
+    print("\t██╗  ██╗ █████╗ ███████╗██╗  ██╗████████╗ ██████╗  ██████╗ ██╗     ")
+    print("\t██║  ██║██╔══██╗██╔════╝██║  ██║╚══██╔══╝██╔═══██╗██╔═══██╗██║     ")
+    print("\t███████║███████║███████╗███████║   ██║   ██║   ██║██║   ██║██║     ")
+    print("\t██╔══██║██╔══██║╚════██║██╔══██║   ██║   ██║   ██║██║   ██║██║     ")
+    print("\t██║  ██║██║  ██║███████║██║  ██║   ██║   ╚██████╔╝╚██████╔╝███████╗")
+    print("\t╚═╝  ╚═╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝   ╚═╝    ╚═════╝  ╚═════╝ ╚══════╝\n")
+    choice = input("* 1)MD5\n* 2)SHA1\n* 3)SHA256\n* 4)SHA512\n:")
+
+    if choice == "1":
+        res = hashlib.md5(str(argm).encode("ascii")).hexdigest()
+        print("Hash -> {}".format(res))
+    elif choice == "2":
+        res = hashlib.sha1(str(argm).encode("ascii")).hexdigest()
+        print("Hash -> {}".format(res))
+    elif choice == "3":
+        res = hashlib.sha256(str(argm).encode("ascii")).hexdigest()
+        print("Hash -> {}".format(res))
+    elif choice == "4":  
+        res = hashlib.sha512(str(argm).encode("ascii")).hexdigest()
+        print("Hash -> {}".format(res))
+    else:
+        print("Error choice!")
+        exit(0)
+
+    
+if __name__ == "__main__":
+    main()
