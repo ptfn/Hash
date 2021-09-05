@@ -14,7 +14,7 @@ def main():
     print("\t██╔══██║██╔══██║╚════██║██╔══██║   ██║   ██║   ██║██║   ██║██║     ")
     print("\t██║  ██║██║  ██║███████║██║  ██║   ██║   ╚██████╔╝╚██████╔╝███████╗")
     print("\t╚═╝  ╚═╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝   ╚═╝    ╚═════╝  ╚═════╝ ╚══════╝\n")
-    choice = input("Select hash:\n* 1)MD5\n* 2)SHA1\n* 3)SHA256\n* 4)SHA512\n:")
+    choice = input("Select hash:\n* 1)MD5\n* 2)SHA1\n* 3)SHA256\n* 4)SHA512\n* 5)Exit\n:")
 
     if choice == "1":
         res = md5(str(argm).encode("ascii")).hexdigest()
@@ -28,6 +28,8 @@ def main():
     elif choice == "4":  
         res = sha512(str(argm).encode("ascii")).hexdigest()
         print("Hash -> {}".format(res))
+    elif choice == "5":
+        exit(0)    
     else:
         print("Error choice!")
         exit(0)
