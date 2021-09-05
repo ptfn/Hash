@@ -1,19 +1,26 @@
-import hashlib, os
+from hashlib import md5, sha1, sha256
+from os.path import getsize
+from sys import argv
 
-file_name = input('File name:')
+try:
+    file_name =  argv[1]
+except:
+    print("Error argument!")
+    exit(0)
+
 file = open(file_name, 'r')
 string = file.readlines()
 hash = ''
-folder_size = os.path.getsize(file_name)
+folder_size = getsize(file_name)
 
 for i in range(len(string)):
     hash += string[i]
 
-hash_md5 = hashlib.md5(str(hash).encode()).hexdigest()
-hash_sha1 = hashlib.sha1(str(hash).encode()).hexdigest()
-hash_sha256 = hashlib.sha256(str(hash).encode()).hexdigest()
+hash_md5 = md5(str(hash).encode()).hexdigest()
+hash_sha1 = sha1(str(hash).encode()).hexdigest()
+hash_sha256 = sha256(str(hash).encode()).hexdigest()
 
-print("size: {} byte".format(folder_size))
-print("md5:",hash_md5)
-print("sha1:",hash_sha1)
-print("sha256:",hash_sha256)
+print("Size -> {} Byte".format(folder_size))
+print("MD5 -> {}".format(hash_md5))
+print("SHA1 -> {}".format(hash_sha1))
+print("SHA256 -> {}".format(hash_sha256))
